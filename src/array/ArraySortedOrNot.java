@@ -2,28 +2,27 @@ package array;
 
 import java.util.Scanner;
 
-public class MissingNoInArray {
+public class ArraySortedOrNot {
 	public static void main(String[] args) {
 		Scanner scr = new Scanner(System.in);
-
 		int[] arr = new int[5];
 
-		System.out.println("Enter Array Elements");
+		System.out.println("Enter Elements in array");
 
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = scr.nextInt();
 		}
 
-		int n = arr.length + 1;
+		int temp = arr[0];
 
-		int expSum = (n * (n + 1) / 2);
-
-		int actSum = 0;
 		for (int num : arr) {
-			actSum = actSum + num;
+			if (!(num >= temp)) {
+				System.out.println("\"Array is not sorted\"");
+				return;
+			}
+			temp = num;
 		}
 
-		System.out.println("Missing Element Of Array is : " + (expSum - actSum));
-
+		System.out.println("Array is sorted");
 	}
 }
