@@ -1,18 +1,17 @@
 package array;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Scanner;
 
-public class RmoveDuplicateFromSortedArray {
+public class RemoveDuplicateFromUnsortedArray {
 	public static void main(String[] args) {
+		int[] arr = new int[5];
 		Scanner scr = new Scanner(System.in);
 
-		int[] arr = new int[5];
 		System.out.println("Enter Array Elements");
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = scr.nextInt();
 		}
-
-		Arrays.sort(arr);
 
 		int k = removeDuplicate(arr);
 
@@ -23,15 +22,17 @@ public class RmoveDuplicateFromSortedArray {
 	}
 
 	public static int removeDuplicate(int[] arr) {
-		int k = 1;
+		HashSet<Integer> set = new HashSet<>();
 
-		for (int i = 1; i < arr.length; i++) {
-			if (arr[i] != arr[i - 1]) {
-				arr[k] = arr[i];
+		int k = 0;
+
+		for (int num : arr) {
+			if (!set.contains(num)) {
+				set.add(num);
+				arr[k] = num;
 				k++;
 			}
 		}
-
 		return k;
 	}
 }
